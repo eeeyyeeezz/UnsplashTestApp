@@ -9,8 +9,6 @@ import UIKit
 
 final class MessageTextField: UITextField {
 	
-//	private let textPadding = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-
 	private let magnifyingGlassImage: UIImageView = {
 		let imageView = UIImageView()
 		imageView.tintColor = #colorLiteral(red: 0.7686274648, green: 0.7686274648, blue: 0.7686274648, alpha: 1)
@@ -23,18 +21,8 @@ final class MessageTextField: UITextField {
 	
 	init() {
 		super.init(frame: .zero)
-		setupTextField(placeholder: "Телефоны, яблоки, груши")
+		setupTextField(placeholder: "Телефоны, яблоки, груши...")
 	}
-	
-//	override func textRect(forBounds bounds: CGRect) -> CGRect {
-//		let rect = super.textRect(forBounds: bounds)
-//		return rect.inset(by: textPadding)
-//	}
-//
-//	override func editingRect(forBounds bounds: CGRect) -> CGRect {
-//		let rect = super.editingRect(forBounds: bounds)
-//		return rect.inset(by: textPadding)
-//	}
 	
 	private func setupTextField(placeholder: String) {
 		translatesAutoresizingMaskIntoConstraints = false

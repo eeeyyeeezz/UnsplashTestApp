@@ -14,6 +14,7 @@
 		4E66B9922A41E9B4005E0B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E66B9912A41E9B4005E0B11 /* Assets.xcassets */; };
 		4E66B9952A41E9B4005E0B11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E66B9932A41E9B4005E0B11 /* LaunchScreen.storyboard */; };
 		4E66B99E2A41EA7C005E0B11 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66B99D2A41EA7C005E0B11 /* TextField.swift */; };
+		4E66B9A02A41F190005E0B11 /* PhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66B99F2A41F190005E0B11 /* PhotosCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4E66B9942A41E9B4005E0B11 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E66B9962A41E9B4005E0B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E66B99D2A41EA7C005E0B11 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		4E66B99F2A41F190005E0B11 /* PhotosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				4E66B99C2A41E9BC005E0B11 /* Core */,
 				4E66B98C2A41E9B3005E0B11 /* ViewController.swift */,
+				4E66B99F2A41F190005E0B11 /* PhotosCollectionView.swift */,
 				4E66B99D2A41EA7C005E0B11 /* TextField.swift */,
 			);
 			path = UnsplashTestApp;
@@ -151,6 +154,7 @@
 			files = (
 				4E66B98D2A41E9B3005E0B11 /* ViewController.swift in Sources */,
 				4E66B9892A41E9B3005E0B11 /* AppDelegate.swift in Sources */,
+				4E66B9A02A41F190005E0B11 /* PhotosCollectionView.swift in Sources */,
 				4E66B98B2A41E9B3005E0B11 /* SceneDelegate.swift in Sources */,
 				4E66B99E2A41EA7C005E0B11 /* TextField.swift in Sources */,
 			);
