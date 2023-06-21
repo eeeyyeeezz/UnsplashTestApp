@@ -68,7 +68,7 @@ final class NetworkManager {
 			cache[url] = data
 			completion(.success(data))
 		}
-		
+
 		task.resume()
 	}
 

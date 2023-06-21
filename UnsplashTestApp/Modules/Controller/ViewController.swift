@@ -160,8 +160,10 @@ final class ViewController: UIViewController {
 						self.activityIndicator.removeFromSuperview()
 					}
 				case .failure(let error):
-					activityIndicator.removeFromSuperview()
-					failureLabel.isHidden = false
+					DispatchQueue.main.async {
+						self.activityIndicator.removeFromSuperview()
+						self.failureLabel.isHidden = false
+					}
 					debugPrint("Не удалось загрузить фотографии: \(error)")
 				}
 		}

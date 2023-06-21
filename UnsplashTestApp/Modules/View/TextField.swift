@@ -9,14 +9,13 @@ import UIKit
 
 final class MessageTextField: UITextField {
 	
-	private let textPadding = UIEdgeInsets(top: 14.5, left: 6, bottom: 14.5, right: 0)
+	private let textPadding = UIEdgeInsets(top: 14.5, left: 12, bottom: 14.5, right: 0)
 	
 	private let magnifyingGlassImage: UIImageView = {
 		let imageView = UIImageView()
 		imageView.tintColor = #colorLiteral(red: 0.7686274648, green: 0.7686274648, blue: 0.7686274648, alpha: 1)
 		let magnifyingGlassImage = UIImage(systemName: "magnifyingglass")
 		imageView.image = magnifyingGlassImage
-//		imageView.frame = CGRect(x: 10, y: 5, width: 45, height: 20)
 		imageView.contentMode = .scaleAspectFit
 		return imageView
 	}()
@@ -45,6 +44,7 @@ final class MessageTextField: UITextField {
 		placeholder = customPlaceholder
 
 		leftViewMode = .always
+		magnifyingGlassImage.bounds = CGRect(x: -50, y: 0, width: 0, height: 0)
 		leftView = magnifyingGlassImage
 		clearButtonMode = .whileEditing
 		returnKeyType = UIReturnKeyType.search
