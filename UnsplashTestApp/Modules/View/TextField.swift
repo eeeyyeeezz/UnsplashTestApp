@@ -38,7 +38,7 @@ final class MessageTextField: UITextField {
 	private func setupTextField(customPlaceholder: String) {
 		translatesAutoresizingMaskIntoConstraints = false
 		textColor = .black
-		layer.cornerRadius = 10
+		layer.cornerRadius = 15
 		layer.backgroundColor = #colorLiteral(red: 0.9333333373, green: 0.9333333373, blue: 0.9333333373, alpha: 1)
 		adjustsFontSizeToFitWidth = true
 		placeholder = customPlaceholder
