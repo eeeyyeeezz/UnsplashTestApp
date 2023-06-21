@@ -104,13 +104,17 @@ final class ViewController: UIViewController {
 			guard let self = self else { return }
 			switch result {
 				case .success(let photoURLs):
+				let oldValue = models.count
 				self.models.append(contentsOf: photoURLs)
 				debugPrint("Фотографий всего \(self.models.count) в кэше \(self.imageCacheForCells.count)")
 					DispatchQueue.main.async {
 						if self.models.count == 0 {
 							self.failureLabel.isHidden = false
 						} else {
-							self.collectionView.reloadData()
+							let range = oldValue..<self.models.count
+							let newIndexPaths = range.map { IndexPath(row: $0, section: 0) }
+							self.collectionView.insertItems(at: newIndexPaths)
+//							self.collectionView.reloadData()
 						}
 						self.activityIndicator.removeFromSuperview()
 					}
