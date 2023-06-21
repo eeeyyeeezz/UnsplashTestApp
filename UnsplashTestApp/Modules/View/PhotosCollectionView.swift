@@ -7,30 +7,10 @@
 
 import UIKit
 
-class PhotoCell: UICollectionViewCell {
-	
-	static let identifier = "PhotoCell"
-	
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-		layer.cornerRadius = 5
-		backgroundColor = .orange
-	}
-	
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-	
-}
-
-
 class PhotosCollectionView: UICollectionView {
 
 	init(frame: CGRect) {
 		let layout = UICollectionViewFlowLayout()
-//		layout.itemSize = CGSize(width: frame.width / 3, height: 100)
-//		layout.minimumInteritemSpacing = 0
-//		layout.minimumLineSpacing = 0
 		layout.scrollDirection = .vertical
 		
 		super.init(frame: frame, collectionViewLayout: layout)

@@ -62,7 +62,8 @@ final class ViewController: UIViewController {
 	
 	private func setupBinding() {
 		textField.delegate = self
-		collectionView.isHidden = true
+//		collectionView.isHidden = true
+		collectionView.isHidden = false
 		
 		collectionView.delegate = self
 		collectionView.dataSource = self
@@ -92,8 +93,8 @@ final class ViewController: UIViewController {
 		collectionViewTopConstraint = collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
 		NSLayoutConstraint.activate([
 			collectionViewTopConstraint,
-			collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+			collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
 			collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
 		])
 		
@@ -146,8 +147,12 @@ final class ViewController: UIViewController {
 					DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 						self.models = photoURLs
 						debugPrint("Количество загруженных фотографий: \(photoURLs.count)")
+						if photoURLs.count == 0 {
+							self.failureLabel.isHidden = false
+						} else {
+							self.collectionView.reloadData()
+						}
 						self.activityIndicator.removeFromSuperview()
-						self.collectionView.reloadData()
 					}
 				case .failure(let error):
 					activityIndicator.removeFromSuperview()
@@ -176,7 +181,7 @@ extension ViewController: UITextFieldDelegate {
 	
 	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
 		
-		debugPrint(string)
+//		debugPrint(string)
 		return true
 	}
 }

@@ -39,6 +39,32 @@ final class NetworkManager {
 
 		task.resume()
 	}
+	
+	static func parseAndLoadImage(fromURL url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+		let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+			if let error = error {
+				completion(.failure(error))
+				return
+			}
+			
+			guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
+				let error = NSError(domain: "APIError", code: 0, userInfo: nil)
+				completion(.failure(error))
+				return
+			}
+			
+			guard let data = data else {
+				let error = NSError(domain: "APIError", code: 0, userInfo: nil)
+				completion(.failure(error))
+				return
+			}
+			
+			completion(.success(data))
+		}
+		
+		task.resume()
+	}
+
 
 	
 }
