@@ -26,11 +26,13 @@ final class MessageTextField: UITextField {
 	
 	private func setupTextField(placeholder: String) {
 		translatesAutoresizingMaskIntoConstraints = false
-		textColor = #colorLiteral(red: 0.611764729, green: 0.6117646694, blue: 0.611764729, alpha: 1)
+		textColor = .black
 		layer.cornerRadius = 10
 		layer.backgroundColor = #colorLiteral(red: 0.9333333373, green: 0.9333333373, blue: 0.9333333373, alpha: 1)
 		attributedPlaceholder = NSAttributedString(string: placeholder,
 														   attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+
+		
 		
 		leftViewMode = .always
 		leftView = magnifyingGlassImage

@@ -15,6 +15,9 @@
 		4E66B9952A41E9B4005E0B11 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E66B9932A41E9B4005E0B11 /* LaunchScreen.storyboard */; };
 		4E66B99E2A41EA7C005E0B11 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66B99D2A41EA7C005E0B11 /* TextField.swift */; };
 		4E66B9A02A41F190005E0B11 /* PhotosCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66B99F2A41F190005E0B11 /* PhotosCollectionView.swift */; };
+		4E66B9A22A41F503005E0B11 /* JsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66B9A12A41F503005E0B11 /* JsonModel.swift */; };
+		4E66B9A82A42A920005E0B11 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E66B9A72A42A920005E0B11 /* NetworkManager.swift */; };
+		4E6F09AB2A42B19A00CB9BCD /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F09AA2A42B19A00CB9BCD /* CollectionViewDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		4E66B9962A41E9B4005E0B11 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E66B99D2A41EA7C005E0B11 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		4E66B99F2A41F190005E0B11 /* PhotosCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosCollectionView.swift; sourceTree = "<group>"; };
+		4E66B9A12A41F503005E0B11 /* JsonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonModel.swift; sourceTree = "<group>"; };
+		4E66B9A72A42A920005E0B11 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4E6F09AA2A42B19A00CB9BCD /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,9 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				4E66B99C2A41E9BC005E0B11 /* Core */,
-				4E66B98C2A41E9B3005E0B11 /* ViewController.swift */,
-				4E66B99F2A41F190005E0B11 /* PhotosCollectionView.swift */,
-				4E66B99D2A41EA7C005E0B11 /* TextField.swift */,
+				4E66B9A32A41F529005E0B11 /* Modules */,
 			);
 			path = UnsplashTestApp;
 			sourceTree = "<group>";
@@ -79,6 +83,43 @@
 				4E66B9962A41E9B4005E0B11 /* Info.plist */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		4E66B9A32A41F529005E0B11 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				4E66B9A62A41F8AC005E0B11 /* Controller */,
+				4E66B9A52A41F8A9005E0B11 /* View */,
+				4E66B9A42A41F8A3005E0B11 /* Model */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		4E66B9A42A41F8A3005E0B11 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4E66B9A12A41F503005E0B11 /* JsonModel.swift */,
+				4E66B9A72A42A920005E0B11 /* NetworkManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4E66B9A52A41F8A9005E0B11 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4E66B99F2A41F190005E0B11 /* PhotosCollectionView.swift */,
+				4E66B99D2A41EA7C005E0B11 /* TextField.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4E66B9A62A41F8AC005E0B11 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4E66B98C2A41E9B3005E0B11 /* ViewController.swift */,
+				4E6F09AA2A42B19A00CB9BCD /* CollectionViewDelegate.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -153,8 +194,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E66B98D2A41E9B3005E0B11 /* ViewController.swift in Sources */,
+				4E6F09AB2A42B19A00CB9BCD /* CollectionViewDelegate.swift in Sources */,
 				4E66B9892A41E9B3005E0B11 /* AppDelegate.swift in Sources */,
 				4E66B9A02A41F190005E0B11 /* PhotosCollectionView.swift in Sources */,
+				4E66B9A82A42A920005E0B11 /* NetworkManager.swift in Sources */,
+				4E66B9A22A41F503005E0B11 /* JsonModel.swift in Sources */,
 				4E66B98B2A41E9B3005E0B11 /* SceneDelegate.swift in Sources */,
 				4E66B99E2A41EA7C005E0B11 /* TextField.swift in Sources */,
 			);
