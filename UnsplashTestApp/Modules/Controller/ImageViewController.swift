@@ -9,8 +9,9 @@ import UIKit
 
 class ImageViewController: UIViewController {
 	
-	let image: UIImageView = {
+	let imageView: UIImageView = {
 		let image = UIImageView()
+		image.alpha = 0.3
 		image.translatesAutoresizingMaskIntoConstraints = false
 		return image
 	}()
@@ -18,13 +19,17 @@ class ImageViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		view.backgroundColor = .white
-		view.addSubview(image)
+		view.addSubview(imageView)
 		NSLayoutConstraint.activate([
-			image.topAnchor.constraint(equalTo: view.topAnchor),
-			image.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			image.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			image.bottomAnchor.constraint(equalTo: view.centerYAnchor)
+			imageView.topAnchor.constraint(equalTo: view.topAnchor),
+			imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			imageView.bottomAnchor.constraint(equalTo: view.centerYAnchor)
 		])
+		
+		UIView.animate(withDuration: 0.3) {
+			self.imageView.alpha = 1
+		}
 	}
 	
 }

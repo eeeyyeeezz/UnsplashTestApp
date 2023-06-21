@@ -21,12 +21,16 @@ final class ViewController: UIViewController {
 		return activityIndicator
 	}()
 	
+	/// Все три переменнные нужны для изменения констрейтов
 	private var searchButtonTopConstraint = NSLayoutConstraint()
 	
 	private var textFieldTopConstraint = NSLayoutConstraint()
 	
 	private var collectionViewTopConstraint = NSLayoutConstraint()
 	
+	private var textSearch = ""
+	
+	/// Переменная нужна чтобы не вызывать каждый раз изменение констрейтов после первого ввода
 	private var constraintsAreStable = false
 	
 	var models = [URL]()
@@ -46,8 +50,8 @@ final class ViewController: UIViewController {
 		let label = UILabel()
 		label.textColor = #colorLiteral(red: 0.4705882668, green: 0.4705882668, blue: 0.4705882668, alpha: 1)
 		label.isHidden = true
+		label.adjustsFontSizeToFitWidth = true
 		label.font = label.font.withSize(16)
-//		label.adjustsFontSizeToFitWidth = true
 		label.text = "К сожалению, поиск не дал результатов"
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
@@ -62,8 +66,7 @@ final class ViewController: UIViewController {
 	
 	private func setupBinding() {
 		textField.delegate = self
-//		collectionView.isHidden = true
-		collectionView.isHidden = false
+		collectionView.isHidden = true
 		
 		collectionView.delegate = self
 		collectionView.dataSource = self
@@ -102,7 +105,9 @@ final class ViewController: UIViewController {
 	
 	@objc private func searchButtonTapped() {
 		configureConstraints()
-		loadModels("snow")
+		loadModels(textSearch)
+		textSearch = ""
+		textField.text = ""
 	}
 	
 	private func configureConstraints() {
@@ -124,7 +129,6 @@ final class ViewController: UIViewController {
 					failureLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
 					failureLabel.heightAnchor.constraint(equalToConstant: 19),
 					failureLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-//					failureLabel.widthAnchor.constraint(equalToConstant: 283)
 				])
 				view.layoutIfNeeded()
 			}
@@ -134,6 +138,7 @@ final class ViewController: UIViewController {
 	
 	private func loadModels(_ response: String) {
 		models = []
+		textField.resignFirstResponder()
 		failureLabel.isHidden = true
 		collectionView.reloadData()
 		/// Если прятать activityIndicator под isHidden = true то цвет черным не становится поэтому нужно каждый раз добавлять заново на вью
@@ -144,7 +149,7 @@ final class ViewController: UIViewController {
 			guard let self = self else { return }
 			switch result {
 				case .success(let photoURLs):
-					DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+					DispatchQueue.main.async {
 						self.models = photoURLs
 						debugPrint("Количество загруженных фотографий: \(photoURLs.count)")
 						if photoURLs.count == 0 {
@@ -174,15 +179,17 @@ extension ViewController: UITextFieldDelegate {
 			configureConstraints()
 			loadModels(text)
 			textField.text = ""
+			textSearch = ""
 		}
 		textField.text = nil
 		return true
 	}
 	
-	func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-		
-//		debugPrint(string)
-		return true
+	func textFieldDidChangeSelection(_ textField: UITextField) {
+		if let text = textField.text {
+			textSearch = text
+		}
 	}
+	
 }
 

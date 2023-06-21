@@ -9,6 +9,8 @@ import Foundation
 
 final class NetworkManager {
 	
+	private static var cache: [URL: Data] = [:]
+	
 	static func loadPhotos(searchResponse: String, completion: @escaping (Result<[URL], Error>) -> Void) {
 		let urlString = "https://api.unsplash.com/search/photos?client_id=Ip0XA55zY7b7-d19osq1L5btGg-YCeDZVpnnJjXqHxs&query=\(searchResponse)"
 
@@ -41,6 +43,11 @@ final class NetworkManager {
 	}
 	
 	static func parseAndLoadImage(fromURL url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
+		if let cachedData = cache[url] {
+			completion(.success(cachedData))
+			return
+		  }
+		
 		let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
 			if let error = error {
 				completion(.failure(error))
@@ -58,7 +65,7 @@ final class NetworkManager {
 				completion(.failure(error))
 				return
 			}
-			
+			cache[url] = data
 			completion(.success(data))
 		}
 		
