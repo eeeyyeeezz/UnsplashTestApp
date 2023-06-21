@@ -20,6 +20,7 @@
 		4E6F09AB2A42B19A00CB9BCD /* CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F09AA2A42B19A00CB9BCD /* CollectionViewDelegate.swift */; };
 		4E6F09AF2A42BD3100CB9BCD /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F09AE2A42BD3100CB9BCD /* PhotoCell.swift */; };
 		4E6F09B12A42C59900CB9BCD /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E6F09B02A42C59900CB9BCD /* ImageViewController.swift */; };
+		4EF109742A43061400B5D7F0 /* Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF109732A43061400B5D7F0 /* Constraints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		4E6F09AA2A42B19A00CB9BCD /* CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDelegate.swift; sourceTree = "<group>"; };
 		4E6F09AE2A42BD3100CB9BCD /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		4E6F09B02A42C59900CB9BCD /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		4EF109732A43061400B5D7F0 /* Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constraints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				4E66B98C2A41E9B3005E0B11 /* ViewController.swift */,
+				4EF109732A43061400B5D7F0 /* Constraints.swift */,
 				4E6F09B02A42C59900CB9BCD /* ImageViewController.swift */,
 				4E6F09AA2A42B19A00CB9BCD /* CollectionViewDelegate.swift */,
 			);
@@ -203,6 +206,7 @@
 				4E66B98D2A41E9B3005E0B11 /* ViewController.swift in Sources */,
 				4E6F09AF2A42BD3100CB9BCD /* PhotoCell.swift in Sources */,
 				4E6F09AB2A42B19A00CB9BCD /* CollectionViewDelegate.swift in Sources */,
+				4EF109742A43061400B5D7F0 /* Constraints.swift in Sources */,
 				4E66B9892A41E9B3005E0B11 /* AppDelegate.swift in Sources */,
 				4E66B9A02A41F190005E0B11 /* PhotosCollectionView.swift in Sources */,
 				4E66B9A82A42A920005E0B11 /* NetworkManager.swift in Sources */,

@@ -14,30 +14,29 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as! PhotoCell
 		
 		let url = models[indexPath.row]
-		downloadImage(url) { image in
-			DispatchQueue.main.async {
-				cell.imageView.image = image
+
+		if let cachedImage = imageCacheForCells[url] {
+			cell.imageView.image = cachedImage
+		} else {
+			downloadImage(url) { image in
+				DispatchQueue.main.async {
+					cell.imageView.image = image
+				}
 			}
 		}
-
+		
 		/// Пагинация
 		if indexPath.row == models.count - 1 {
-			debugPrint("textSearch \(textSearch)")
-			DispatchQueue.global().async { [weak self] in
+			DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) { [weak self] in
 				guard let self = self else { return }
 				self.fetchData(self.textSearch)
 			}
 		}
-		
+
 		return cell
 	}
 	
 	private func downloadImage(_ url: URL, completion: @escaping (UIImage?) -> ()) {
-		if let cachedImage = imageCacheForCells[url] {
-			completion(cachedImage)
-			return
-		}
-		
 		DispatchQueue.global().async {
 			NetworkManager.parseAndLoadImage(fromURL: url) { [weak self] result in
 				switch result {
