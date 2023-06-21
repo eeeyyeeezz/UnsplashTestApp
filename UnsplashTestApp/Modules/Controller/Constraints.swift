@@ -19,7 +19,7 @@ extension ViewController {
 		
 		textFieldTopConstraint = textField.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -16)
 		NSLayoutConstraint.activate([
-			textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
+			textField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
 			textFieldTopConstraint,
 			textField.trailingAnchor.constraint(equalTo: searchButton.leadingAnchor, constant: -10),
 			textField.heightAnchor.constraint(equalToConstant: 48)
@@ -48,7 +48,7 @@ extension ViewController {
 				NSLayoutConstraint.activate([
 					searchButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
 					textField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 10),
-					collectionView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 20),
+					collectionView.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 32),
 					
 					failureLabel.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 56),
 					failureLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
