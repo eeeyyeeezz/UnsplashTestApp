@@ -28,10 +28,13 @@ final class ViewController: UIViewController {
 	
 	private var collectionViewTopConstraint = NSLayoutConstraint()
 	
-	private var textSearch = ""
-	
 	/// Переменная нужна чтобы не вызывать каждый раз изменение констрейтов после первого ввода
 	private var constraintsAreStable = false
+	
+	/// Кэш для ячеек с картинками
+	var imageCacheForCells: [URL: UIImage] = [:]
+	
+	var textSearch = ""
 	
 	var models = [URL]()
 	
@@ -104,9 +107,9 @@ final class ViewController: UIViewController {
 	}
 	
 	@objc private func searchButtonTapped() {
+		models = []
 		configureConstraints()
 		loadModels(textSearch)
-		textSearch = ""
 		textField.text = ""
 	}
 	
@@ -136,23 +139,26 @@ final class ViewController: UIViewController {
 		}
 	}
 	
-	private func loadModels(_ response: String) {
-		models = []
+	/// Если прятать activityIndicator под isHidden = true то цвет черным не становится поэтому нужно каждый раз добавлять заново на вью
+	/// Походу это говнокод зато работает лол
+	/// Если знаете как пофиксить чтобы по человечески с ishidden = true работало то отправьте почтового голубя
+	func loadModels(_ response: String) {
 		textField.resignFirstResponder()
 		failureLabel.isHidden = true
 		collectionView.reloadData()
-		/// Если прятать activityIndicator под isHidden = true то цвет черным не становится поэтому нужно каждый раз добавлять заново на вью
-		/// Походу это говнокод зато работает лол
-		/// Если знаете как пофиксить чтобы по человечески с ishidden = true работало то отправьте почтового голубя
 		view.addSubview(activityIndicator)
+		fetchData(response)
+	}
+	
+	func fetchData(_ response: String) {
 		NetworkManager.loadPhotos(searchResponse: response) { [weak self] result in
 			guard let self = self else { return }
 			switch result {
 				case .success(let photoURLs):
 					DispatchQueue.main.async {
-						self.models = photoURLs
-						debugPrint("Количество загруженных фотографий: \(photoURLs.count)")
-						if photoURLs.count == 0 {
+						self.models.append(contentsOf: photoURLs)
+						debugPrint("Количество загруженных фотографий: \(photoURLs.count), фотографий всего \(self.models.count)")
+						if self.models.count == 0 {
 							self.failureLabel.isHidden = false
 						} else {
 							self.collectionView.reloadData()
@@ -160,6 +166,7 @@ final class ViewController: UIViewController {
 						self.activityIndicator.removeFromSuperview()
 					}
 				case .failure(let error):
+					guard models.isEmpty else { return }
 					DispatchQueue.main.async {
 						self.activityIndicator.removeFromSuperview()
 						self.failureLabel.isHidden = false
@@ -167,7 +174,6 @@ final class ViewController: UIViewController {
 					debugPrint("Не удалось загрузить фотографии: \(error)")
 				}
 		}
-		
 	}
 
 
@@ -178,10 +184,10 @@ extension ViewController: UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		if let text = textField.text, !text.isEmpty {
 			debugPrint(text)
+			models = []
 			configureConstraints()
 			loadModels(text)
 			textField.text = ""
-			textSearch = ""
 		}
 		textField.text = nil
 		return true

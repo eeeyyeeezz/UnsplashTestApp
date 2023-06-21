@@ -9,10 +9,12 @@ import Foundation
 
 final class NetworkManager {
 	
-	private static var cache: [URL: Data] = [:]
+	private static var paginationCounter = 1
 	
 	static func loadPhotos(searchResponse: String, completion: @escaping (Result<[URL], Error>) -> Void) {
-		let urlString = "https://api.unsplash.com/search/photos?client_id=Ip0XA55zY7b7-d19osq1L5btGg-YCeDZVpnnJjXqHxs&query=\(searchResponse)"
+		let response = searchResponse.replacingOccurrences(of: " ", with: "&")
+		
+		let urlString = "https://api.unsplash.com/search/photos?client_id=Ip0XA55zY7b7-d19osq1L5btGg-YCeDZVpnnJjXqHxs&query=\(response)&page=\(paginationCounter)"
 
 		guard let url = URL(string: urlString) else {
 			completion(.failure(NSError(domain: "Invalid URL", code: -1, userInfo: nil)))
@@ -33,6 +35,7 @@ final class NetworkManager {
 			do {
 				let response = try JSONDecoder().decode(UnsplashResponse.self, from: data)
 				let photoURLs = response.results.map { $0.urls.regular }
+				paginationCounter += 1
 				completion(.success(photoURLs))
 			} catch {
 				completion(.failure(error))
@@ -43,11 +46,6 @@ final class NetworkManager {
 	}
 	
 	static func parseAndLoadImage(fromURL url: URL, completion: @escaping (Result<Data, Error>) -> Void) {
-		if let cachedData = cache[url] {
-			completion(.success(cachedData))
-			return
-		  }
-		
 		let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
 			if let error = error {
 				completion(.failure(error))
@@ -65,7 +63,6 @@ final class NetworkManager {
 				completion(.failure(error))
 				return
 			}
-			cache[url] = data
 			completion(.success(data))
 		}
 

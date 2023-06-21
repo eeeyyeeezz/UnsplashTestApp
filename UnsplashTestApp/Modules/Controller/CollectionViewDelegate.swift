@@ -12,8 +12,44 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.identifier, for: indexPath) as! PhotoCell
-		cell.imageUrl = models[indexPath.row]
+		
+		let url = models[indexPath.row]
+		downloadImage(url) { image in
+			DispatchQueue.main.async {
+				cell.imageView.image = image
+			}
+		}
+
+		/// Пагинация
+		if indexPath.row == models.count - 1 {
+			debugPrint("textSearch \(textSearch)")
+			DispatchQueue.global().async { [weak self] in
+				guard let self = self else { return }
+				self.fetchData(self.textSearch)
+			}
+		}
+		
 		return cell
+	}
+	
+	private func downloadImage(_ url: URL, completion: @escaping (UIImage?) -> ()) {
+		if let cachedImage = imageCacheForCells[url] {
+			completion(cachedImage)
+			return
+		}
+		
+		DispatchQueue.global().async {
+			NetworkManager.parseAndLoadImage(fromURL: url) { [weak self] result in
+				switch result {
+				case .success(let data):
+						let image = UIImage(data: data)
+						self?.imageCacheForCells[url] = image
+						completion(image)
+				case .failure(let error):
+					debugPrint("Ошибка при загрузке изображения: \(error)")
+				}
+			}
+		}
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

@@ -20,5 +20,53 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "38EB1BCA-810C-4BCE-A01D-AA99D917F1C6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UnsplashTestApp/Modules/Model/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "loadPhotos(searchResponse:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "38EB1BCA-810C-4BCE-A01D-AA99D917F1C6 - be129f74281f6792"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static UnsplashTestApp.NetworkManager.loadPhotos(searchResponse: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;Foundation.URL&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "UnsplashTestApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olirnnna/Desktop/UnsplashTestApp/UnsplashTestApp/Modules/Model/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "772">
+               </Location>
+               <Location
+                  uuid = "38EB1BCA-810C-4BCE-A01D-AA99D917F1C6 - be129f74281f6792"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static UnsplashTestApp.NetworkManager.loadPhotos(searchResponse: Swift.String, completion: (Swift.Result&lt;Swift.Array&lt;Foundation.URL&gt;, Swift.Error&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "UnsplashTestApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/olirnnna/Desktop/UnsplashTestApp/UnsplashTestApp/Modules/Model/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "844">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
