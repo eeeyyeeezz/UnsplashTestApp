@@ -11,6 +11,10 @@ class PhotoCell: UICollectionViewCell {
 	
 	static let identifier = "PhotoCell"
 
+	var url: URL?
+	
+	var imageCacheForCells: [URL: UIImage] = [:]
+	
 	lazy var imageView: UIImageView = {
 		let image = UIImageView()
 		image.frame = bounds

@@ -27,7 +27,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
 		
 		/// Пагинация
 		if indexPath.row == models.count - 1 {
-			DispatchQueue.global().asyncAfter(deadline: .now() + 0.5) { [weak self] in
+			DispatchQueue.global().asyncAfter(deadline: .now() + 0.3) { [weak self] in
 				guard let self = self else { return }
 				self.fetchData(self.textSearch)
 			}

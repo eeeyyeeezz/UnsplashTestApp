@@ -9,7 +9,7 @@ import Foundation
 
 final class NetworkManager {
 	
-	private static var paginationCounter = 1
+	static var paginationCounter = 1
 	
 	static func loadPhotos(searchResponse: String, completion: @escaping (Result<[URL], Error>) -> Void) {
 		let response = searchResponse.replacingOccurrences(of: " ", with: "&")
@@ -33,9 +33,9 @@ final class NetworkManager {
 			}
 
 			do {
+				paginationCounter += 1
 				let response = try JSONDecoder().decode(UnsplashResponse.self, from: data)
 				let photoURLs = response.results.map { $0.urls.regular }
-				paginationCounter += 1
 				completion(.success(photoURLs))
 			} catch {
 				completion(.failure(error))

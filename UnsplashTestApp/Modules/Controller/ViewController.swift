@@ -8,9 +8,6 @@
 import UIKit
 
 final class ViewController: UIViewController {
-
-	let textField = MessageTextField()
-	
 	
 	private lazy var activityIndicator: UIActivityIndicatorView = {
 		let activityIndicator = UIActivityIndicatorView(style: .medium)
@@ -19,6 +16,8 @@ final class ViewController: UIViewController {
 		activityIndicator.center = view.center
 		return activityIndicator
 	}()
+
+	let textField = MessageTextField()
 	
 	lazy var collectionView = PhotosCollectionView(frame: view.frame)
 	
@@ -92,6 +91,7 @@ final class ViewController: UIViewController {
 	/// Если знаете как пофиксить чтобы по человечески с ishidden = true работало то отправьте почтового голубя
 	func loadModels(_ response: String) {
 		models = []
+		NetworkManager.paginationCounter = 1
 		textField.resignFirstResponder()
 		failureLabel.isHidden = true
 		collectionView.reloadData()
@@ -133,6 +133,7 @@ extension ViewController: UITextFieldDelegate {
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		if let text = textField.text, !text.isEmpty {
 			debugPrint(text)
+			NetworkManager.paginationCounter = 1
 			models = []
 			configureConstraints()
 			collectionView.reloadData()
