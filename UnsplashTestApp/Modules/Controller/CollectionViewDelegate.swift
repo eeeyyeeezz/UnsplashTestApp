@@ -16,6 +16,14 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
 		return cell
 	}
 	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		guard let cell = collectionView.cellForItem(at: indexPath) as? PhotoCell else { return }
+		let imageVC = ImageViewController()
+		imageVC.image.image = cell.image.image
+		present(imageVC, animated: true, completion: nil)
+
+	}
+	
 	func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 //		let width = (collectionView.bounds.width / 3.0) - 6
 //		let height = collectionView.bounds.height / 6 + 10

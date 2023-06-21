@@ -13,7 +13,7 @@ class PhotoCell: UICollectionViewCell {
 	
 	var imageUrl: URL?
 
-	private lazy var image: UIImageView = {
+	lazy var image: UIImageView = {
 		let image = UIImageView(image: nil)
 		image.contentMode = .scaleToFill
 		image.frame = bounds
